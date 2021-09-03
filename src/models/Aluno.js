@@ -17,33 +17,3 @@ export default class Aluno extends Model {
         return this;
     }
 }
-
-// name: {
-//     type: Sequelize.STRING,
-//     allowNull: false,
-// },
-
-// lastName: {
-//     type: Sequelize.STRING,
-//     allowNull: false,
-// },
-
-// email: {
-//     type: Sequelize.STRING,
-//     allowNull: false,
-// },
-
-// age: {
-//     type: Sequelize.INTEGER,
-//     allowNull: false,
-// },
-
-// peso: {
-//     type: Sequelize.FLOAT,
-//     allowNull: false,
-// },
-
-// altura: {
-//     type: Sequelize.FLOAT,
-//     allowNull: false,
-// },
