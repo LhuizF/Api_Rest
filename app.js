@@ -2,8 +2,10 @@ import './src/database';
 
 const dotenv = require('dotenv');
 const express = require('express');
-const homeRoutes = require('./src/routes/home');
-const userRoutes = require('./src/routes/user');
+const homeRoutes = require('./src/routes/homeRoutes');
+const userRoutes = require('./src/routes/userRoutes');
+const tokenRoutes = require('./src/routes/tokenRoutes');
+const alunoRoutes = require('./src/routes/alunoRoutes');
 
 dotenv.config();
 
@@ -22,6 +24,8 @@ class App {
     routes() {
         this.app.use('/', homeRoutes);
         this.app.use('/users/', userRoutes);
+        this.app.use('/tokens/', tokenRoutes);
+        this.app.use('/alunos/', alunoRoutes);
     }
 }
 

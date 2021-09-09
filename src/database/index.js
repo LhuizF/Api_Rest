@@ -1,7 +1,6 @@
-import Aluno from '../models/Aluno';
-import User from '../models/User';
-
 const Sequelize = require('sequelize');
+const Aluno = require('../models/Aluno');
+const User = require('../models/User');
 const databadeConfig = require('../config/database');
 
 const models = [Aluno, User];

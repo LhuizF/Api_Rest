@@ -1,8 +1,7 @@
-import Sequelize, { Model } from 'sequelize';
-
+const Sequelize = require('sequelize');
 const bcryptjs = require('bcryptjs');
 
-export default class User extends Model {
+module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
         super.init({
             nome: {
@@ -11,26 +10,26 @@ export default class User extends Model {
                 validate: {
                     len: {
                         args: [3, 50],
-                        msg: 'Campo nome deve ter entre 3 e 50 caracteres',
-                    },
-                },
+                        msg: 'Campo nome deve ter entre 3 e 50 caracteres'
+                    }
+                }
             },
 
             email: {
                 type: Sequelize.STRING,
                 defaultValue: '',
                 unique: {
-                    msg: 'Email já cadastrado',
+                    msg: 'Email já cadastrado'
                 },
                 validate: {
                     isEmail: {
-                        msg: 'Email inválido',
-                    },
-                },
+                        msg: 'Email inválido'
+                    }
+                }
             },
             password_hash: {
                 type: Sequelize.STRING,
-                defaultValue: '',
+                defaultValue: ''
             },
             password: {
                 type: Sequelize.VIRTUAL,
@@ -38,19 +37,23 @@ export default class User extends Model {
                 validate: {
                     len: {
                         args: [6, 25],
-                        msg: 'Senha precisa ter entre 6 e 25 caracteres',
-                    },
-                },
-            },
+                        msg: 'Senha precisa ter entre 6 e 25 caracteres'
+                    }
+                }
+            }
         },
         {
-            sequelize,
+            sequelize
         });
 
         this.addHook('beforeSave', async (user) => {
-            user.password_hash = await bcryptjs.hash(user.password, 8);
+            if(user.password) {
+                user.password_hash = await bcryptjs.hash(user.password, 8);
+            }
         });
-
-        return this;
     }
-}
+
+    checkPassword(password) {
+        return bcryptjs.compare(password, this.password_hash);
+    }
+};
