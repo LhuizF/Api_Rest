@@ -49,18 +49,20 @@ module.exports = class Aluno extends Sequelize.Model {
                 type: Sequelize.STRING,
                 defaultValue: '',
                 validate: {
-                    isAlpha: {
-                        args: [5, 255],
+                    len: {
+                        args: [3, 255],
                         mgs: 'Curso inválido'
                     }
                 }
             }
 
         },
-        {
-            sequelize
-        });
+        { sequelize });
 
         return this;
+    }
+
+    static associate(models) {
+        this.hasMany(models.Photo, { foreignKey: 'aluno_id' });
     }
 };

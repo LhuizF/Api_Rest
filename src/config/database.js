@@ -15,7 +15,10 @@ module.exports = {
         updated_at: 'updated_at'
     },
     dialectOptions: {
-        timezone: '-03:00'
+        useUTC: false,
+        dateStrings: true,
+        typeCast: true
     },
+    timezone: '-03:00',
     logging: false
 };
