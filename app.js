@@ -1,4 +1,4 @@
-import './src/database';
+require('./src/database');
 
 const dotenv = require('dotenv');
 const express = require('express');
@@ -12,7 +12,7 @@ const photoRoutes = require('./src/routes/photoRoutes');
 
 dotenv.config();
 
-class App {
+module.exports = class App {
     constructor() {
         this.app = express();
         this.middlewares();
@@ -32,6 +32,4 @@ class App {
         this.app.use('/alunos/', alunoRoutes);
         this.app.use('/photos/', photoRoutes);
     }
-}
-
-module.exports = new App().app;
+};

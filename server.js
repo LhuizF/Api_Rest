@@ -1,6 +1,5 @@
-const app = require('./app');
+const App = require('./app');
 
-app.listen(3001, () => {
-    console.log('Online porta 3001');
-    console.log('Host: http://localhost:3001');
-});
+const server = new App().app;
+
+server.listen(process.env.PORT);
