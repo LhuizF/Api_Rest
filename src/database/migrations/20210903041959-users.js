@@ -5,40 +5,40 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 autoIncrement: true,
-                primaryKey: true,
+                primaryKey: true
             },
 
             nome: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: false
             },
 
             email: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                unique: true,
+                unique: true
             },
 
             password_hash: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: false
             },
 
             //----------------------------------------------
 
             created_at: {
                 type: Sequelize.DATE,
-                allowNull: false,
+                allowNull: false
             },
 
             updated_at: {
                 type: Sequelize.DATE,
-                allowNull: false,
-            },
+                allowNull: false
+            }
         });
     },
 
     down: async (queryInterface) => {
         await queryInterface.dropTable('users');
-    },
+    }
 };

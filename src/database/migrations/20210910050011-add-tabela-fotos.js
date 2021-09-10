@@ -1,6 +1,6 @@
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable('alunos', {
+        await queryInterface.createTable('fotos', {
             id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
@@ -8,37 +8,26 @@ module.exports = {
                 primaryKey: true
             },
 
-            nome: {
+            originalname: {
                 type: Sequelize.STRING,
                 allowNull: false
             },
 
-            sobrenome: {
+            filename: {
                 type: Sequelize.STRING,
                 allowNull: false
             },
 
-            email: {
-                type: Sequelize.STRING,
-                allowNull: false
-            },
-
-            idade: {
+            aluno_id: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                allowNull: true,
+                references: {
+                    model: 'alunos',
+                    key: 'id'
+                },
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             },
-
-            peso: {
-                type: Sequelize.FLOAT,
-                allowNull: false
-            },
-
-            altura: {
-                type: Sequelize.FLOAT,
-                allowNull: false
-            },
-
-            //----------------------------------------------
 
             created_at: {
                 type: Sequelize.DATE,
@@ -53,6 +42,6 @@ module.exports = {
     },
 
     down: async (queryInterface) => {
-        await queryInterface.dropTable('alunos');
+        await queryInterface.dropTable('fotos');
     }
 };
