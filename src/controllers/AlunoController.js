@@ -1,9 +1,17 @@
 const Aluno = require('../models/Aluno');
+const Photo = require('../models/Photo');
 
 class AlunoController {
     async index(req, res) {
         try {
-            const alunos = await Aluno.findAll();
+            const alunos = await Aluno.findAll({
+                attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'curso'],
+                order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
+                include: {
+                    model: Photo,
+                    attributes: ['filename']
+                }
+            });
             res.json(alunos);
         } catch (e) {
             console.log(e);
@@ -50,6 +58,7 @@ class AlunoController {
         }
     }
 
+    // url das images somente no show
     async show(req, res) {
         try {
             const { id } = req.params;
@@ -60,7 +69,14 @@ class AlunoController {
                 });
             }
 
-            const aluno = await Aluno.findByPk(id);
+            const aluno = await Aluno.findByPk(id, {
+                attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'curso'],
+                order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
+                include: {
+                    model: Photo,
+                    attributes: ['filename', 'url']
+                }
+            });
 
             if(!aluno) {
                 return res.status(400).json({

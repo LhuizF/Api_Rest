@@ -63,4 +63,8 @@ module.exports = class Aluno extends Sequelize.Model {
 
         return this;
     }
+
+    static associate(models) {
+        this.hasMany(models.Photo, { foreignKey: 'aluno_id' });
+    }
 };
