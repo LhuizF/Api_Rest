@@ -23,7 +23,6 @@ class AlunoController {
             const aluno = await Aluno.create(req.body);
             return res.json(aluno);
         } catch (e) {
-            console.log(e);
             return res.status(400).json({
                 errors: e.errors.map((err) => err.message)
             });
