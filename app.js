@@ -32,7 +32,7 @@ class App {
                 }
             }
         }));
-        this.ap.use(helmet());
+        this.app.use(helmet());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
         this.app.use(express.static(path.resolve(__dirname, 'uploads')));

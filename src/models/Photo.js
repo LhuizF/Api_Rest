@@ -23,6 +23,7 @@ module.exports = class Photo extends Sequelize.Model {
                     }
                 }
             },
+
             url: {
                 type: Sequelize.VIRTUAL,
                 get() {
@@ -32,7 +33,7 @@ module.exports = class Photo extends Sequelize.Model {
         },
         {
             sequelize,
-            tableName: 'photos'
+            tableName: 'fotos'
         });
 
         return this;

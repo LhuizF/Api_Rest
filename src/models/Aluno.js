@@ -49,8 +49,7 @@ module.exports = class Aluno extends Sequelize.Model {
                 type: Sequelize.STRING,
                 defaultValue: '',
                 validate: {
-                    len: {
-                        args: [3, 255],
+                    notEmpty: {
                         mgs: 'Curso inválido'
                     }
                 }

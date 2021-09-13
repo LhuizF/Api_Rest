@@ -1,1 +1,1 @@
-module.exports = { url: process.env.URL };
+module.exports = { url: process.env.APP_URL };

@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const databadeConfig = require('../config/database');
+
 const Aluno = require('../models/Aluno');
 const User = require('../models/User');
 const Photos = require('../models/Photo');

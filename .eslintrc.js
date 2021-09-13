@@ -20,7 +20,6 @@ module.exports = {
             overrides: {
                 if: { after: false }
             }
-        }],
-        camelcase: 'off'
+        }]
     }
 };

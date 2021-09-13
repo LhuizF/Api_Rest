@@ -9,10 +9,9 @@ class AlunoController {
                 order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
                 include: {
                     model: Photo,
-                    attributes: ['url', 'filename']
+                    attributes: ['filename', 'url']
                 }
             });
-
             return res.json(alunos);
         } catch (e) {
             console.log(e);
@@ -26,7 +25,6 @@ class AlunoController {
 
             return res.json(aluno);
         } catch (e) {
-            console.log(e);
             return res.status(400).json({
                 errors: e.errors.map((err) => err.message)
             });
@@ -77,7 +75,7 @@ class AlunoController {
                 order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
                 include: {
                     model: Photo,
-                    attributes: ['url', 'filename']
+                    attributes: ['filename', 'url']
                 }
             });
 

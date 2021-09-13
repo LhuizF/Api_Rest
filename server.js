@@ -1,5 +1,3 @@
-const App = require('./app');
+const app = require('./app');
 
-const server = new App().app;
-
-server.listen(process.env.PORT);
+app.listen(process.env.APP_PORT);
