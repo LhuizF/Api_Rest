@@ -1,7 +1,7 @@
 class HomeController {
     async index(req, res) {
         try {
-            res.json('Home');
+            res.json('index');
         } catch (e) {
             console.log(e);
         }

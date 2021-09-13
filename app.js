@@ -1,4 +1,6 @@
 require('./src/database');
+const cors = require('cors');
+const helmet = require('helmet');
 
 const dotenv = require('dotenv');
 const express = require('express');
@@ -12,6 +14,7 @@ const photoRoutes = require('./src/routes/photoRoutes');
 
 dotenv.config();
 
+const whitelList = ['http://localhost:3000'];
 class App {
     constructor() {
         this.app = express();
@@ -20,6 +23,16 @@ class App {
     }
 
     middlewares() {
+        this.app.use(cors({
+            origin: (origin, callback) => {
+                if(whitelList.indexOf(origin) !== -1 || !origin) {
+                    callback(null, true);
+                } else {
+                    callback(new Error('Not allowed by CORS'));
+                }
+            }
+        }));
+        this.app.use(helmet());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
         this.app.use(express.static(path.resolve(__dirname, 'uploads')));
