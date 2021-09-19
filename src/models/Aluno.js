@@ -9,7 +9,7 @@ module.exports = class Aluno extends Sequelize.Model {
                 validate: {
                     len: {
                         args: [3, 255],
-                        mgs: 'Nome precisa ter entre 3 a 255 caracteres'
+                        msg: 'Nome precisa ter entre 3 a 255 caracteres'
                     }
                 }
             },
@@ -19,7 +19,7 @@ module.exports = class Aluno extends Sequelize.Model {
                 validate: {
                     len: {
                         args: [3, 255],
-                        mgs: 'Sobrenome precisa ter entre 3 a 255 caracteres'
+                        msg: 'Sobrenome precisa ter entre 3 a 255 caracteres'
                     }
                 }
             },
@@ -31,7 +31,7 @@ module.exports = class Aluno extends Sequelize.Model {
                 },
                 validate: {
                     isEmail: {
-                        mgs: 'E-mail inválido'
+                        msg: 'E-mail inválido'
                     }
                 }
             },
@@ -40,7 +40,7 @@ module.exports = class Aluno extends Sequelize.Model {
                 defaultValue: '',
                 validate: {
                     isInt: {
-                        mgs: 'Idade inválido'
+                        msg: 'Idade inválido'
                     }
                 }
             },
@@ -50,7 +50,7 @@ module.exports = class Aluno extends Sequelize.Model {
                 defaultValue: '',
                 validate: {
                     notEmpty: {
-                        mgs: 'Curso inválido'
+                        msg: 'Curso inválido'
                     }
                 }
             }

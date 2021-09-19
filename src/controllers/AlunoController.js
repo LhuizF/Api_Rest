@@ -26,7 +26,12 @@ class AlunoController {
             return res.json(aluno);
         } catch (e) {
             return res.status(400).json({
-                errors: e.errors.map((err) => err.message)
+
+                errors: e.errors.map((err) => {
+                    console.log(err);
+                    return err.message;
+                })
+
             });
         }
     }
